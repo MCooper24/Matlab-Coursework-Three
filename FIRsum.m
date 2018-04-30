@@ -1,20 +1,18 @@
-%% TASK 1
+% TASK 1 - FIR Filtering Function
 
-function Y = FIRsum(x,h)
+function y = FIRsum(x,h)
 
-% Calculates the FIR filter.
+% Custom FIR filtering sum.
 
-m = length(x);
-n = length(h);
-X = [x,zeros(1,n)];
-H = [h,zeros(1,m)];
+N = length(x)
+M = length(h)
 
-for i=1:n+m-1
-    Y(i)=0;
-    for j=1:m
-        if(i-j+1>0)
-            Y(i)=Y(i)+X(j)*H(i-j+1);
-        else
-        end;
-    end;
-end;
+for n= 1:N
+    y(n) = 0;
+    for k = 1:M
+        if (n+1-k) > 0
+            y(n) = y(n)+(h(k) * x((n+1)-k))
+        end
+    end
+end
+end
